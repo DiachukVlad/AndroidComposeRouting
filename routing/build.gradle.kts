@@ -1,5 +1,6 @@
 plugins {
     id("com.android.library")
+    id("maven-publish")
     kotlin("android")
 }
 
@@ -7,22 +8,40 @@ group = "com.diachuk.routing"
 version = "1.0"
 
 android {
+    namespace = "com.diachuk.routing"
+
     compileSdk = AndroidSdk.compile
     sourceSets["main"].manifest.srcFile("src/main/AndroidManifest.xml")
+
     defaultConfig {
         minSdk = AndroidSdk.min
         targetSdk = AndroidSdk.target
+        aarMetadata {
+            minCompileSdk = 21
+        }
     }
+
     lint {
         abortOnError = false
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.composeCompiler
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+        }
     }
 }
 
 dependencies {
-    implementation("androidx.activity:activity-compose:1.5.1")
-    implementation("com.google.android.material:material:1.6.1")
-
-    with (Compose) {
+    with(Compose) {
         implementation(compiler)
         implementation(ui)
         implementation(uiGraphics)

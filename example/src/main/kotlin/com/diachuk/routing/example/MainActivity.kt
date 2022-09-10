@@ -63,6 +63,9 @@ val MainScreen by createRoute {
         Button(onClick = { routing.navigate(SendDataScreen) }) {
             Text(text = "Send data")
         }
+        Button(onClick = { routing.navigate(BottomNavigationFlowScreen) }) {
+            Text(text = "Bottom Navigation with Flow")
+        }
     }
 }
 

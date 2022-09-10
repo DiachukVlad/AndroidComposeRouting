@@ -6,6 +6,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.with
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import kotlinx.coroutines.flow.Flow
 
 
 private val LocalRoutingComposition = compositionLocalOf { Routing(EmptyRoute) }
@@ -44,5 +45,17 @@ fun RoutingHost(
 ) {
     RoutingHost(routing = remember {
         Routing(startRoute)
+    })
+}
+
+@Composable
+fun RoutingHost(
+    modifier: Modifier = Modifier,
+    start: Route = EmptyRoute,
+    flowRoute: Flow<Route>,
+    behaviour: NavigationBehaviour
+) {
+    RoutingHost(routing = remember {
+        Routing(start, flowRoute, behaviour)
     })
 }

@@ -43,9 +43,12 @@ fun RoutingHost(
     modifier: Modifier = Modifier,
     startRoute: Route
 ) {
-    RoutingHost(routing = remember {
-        Routing(startRoute)
-    })
+    RoutingHost(
+        modifier,
+        routing = remember {
+            Routing(startRoute)
+        }
+    )
 }
 
 @Composable
@@ -55,7 +58,10 @@ fun RoutingHost(
     flowRoute: Flow<Route>,
     behaviour: NavigationBehaviour
 ) {
-    RoutingHost(routing = remember {
-        Routing(start, flowRoute, behaviour)
-    })
+    RoutingHost(
+        modifier,
+        routing = remember {
+            Routing(start, flowRoute, behaviour)
+        }
+    )
 }

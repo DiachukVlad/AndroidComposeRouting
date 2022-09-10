@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.vldi01"
-version = "1.0.4"
+version = "1.1.0"
 
 android {
     namespace = "com.diachuk.routing"
@@ -126,18 +126,11 @@ publishing {
     }
     repositories {
         maven {
-            val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
-            val snapshotsRepoUrl = uri(layout.buildDirectory.dir("repos/snapshots"))
-            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
-//            url = CustomMavenRepo
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
             credentials {
                 username = project.properties["ossrhUsername"] as String?
                 password = project.properties["ossrhPassword"] as String?
             }
-        }
-        maven {
-            name = "CustomMavenRepo"
-            url = uri(layout.buildDirectory.dir("repos/snapshots"))
         }
     }
 }

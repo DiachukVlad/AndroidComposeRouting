@@ -1,4 +1,4 @@
-package com.tarlad.example.ui.theme
+package com.diachuk.routing.example.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

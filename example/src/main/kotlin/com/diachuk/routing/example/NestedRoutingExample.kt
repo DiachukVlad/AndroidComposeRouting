@@ -1,8 +1,5 @@
-package com.diachuk.routing.example
+package com.diachuk.routing.example.ui.theme
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeOut
@@ -11,29 +8,30 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
 import com.diachuk.routing.LocalRouting
 import com.diachuk.routing.RoutingHost
 import com.diachuk.routing.createRoute
-import com.diachuk.routing.example.ui.theme.NestedRoutingScreen
-import com.diachuk.routing.example.ui.theme.RoutingTheme
+import com.diachuk.routing.example.BlueScreen
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            RoutingTheme {
-                RoutingHost(startRoute = MainScreen)
-            }
-        }
+val NestedRoutingScreen by createRoute {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.DarkGray)
+            .padding(48.dp)
+    ) {
+        RoutingHost(startRoute = NestedMainScreen)
     }
 }
 
-val MainScreen by createRoute {
+val NestedMainScreen by createRoute {
     Column(Modifier.fillMaxSize()) {
         val routing = LocalRouting
 
@@ -53,23 +51,5 @@ val MainScreen by createRoute {
             Text(text = "Blue screen with custom animation")
         }
 
-        Button(onClick = { routing.navigate(NestedRoutingScreen) }) {
-            Text(text = "Nested Routing")
-        }
-
-        Button(onClick = { routing.navigate(BottomNavigationScreen) }) {
-            Text(text = "Bottom Navigation")
-        }
-        Button(onClick = { routing.navigate(SendDataScreen) }) {
-            Text(text = "Send data")
-        }
     }
-}
-
-val BlueScreen by createRoute {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Blue)
-    )
 }

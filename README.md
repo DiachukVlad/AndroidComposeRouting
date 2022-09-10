@@ -1,3 +1,4 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vldi01/android-compose-routing/badge.svg)](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser)
 # Routing for Android Compose
 
 This is a small library that provides easy routing for your app.

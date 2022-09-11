@@ -21,9 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.diachuk.routing.Route
-import com.diachuk.routing.Routing
 import com.diachuk.routing.RoutingHost
-import com.diachuk.routing.createRoute
 
 val BottomNavigationScreen by createRoute {
     val routing = remember { Routing(GreenScreen) }

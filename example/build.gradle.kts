@@ -44,8 +44,8 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.5.1")
     implementation("com.google.android.material:material:1.6.1")
 
-    implementation(project(":routing"))
-//    implementation("io.github.vldi01:android-compose-routing:1.0.4")
+//    implementation(project(":routing"))
+    implementation("io.github.vldi01:android-compose-routing:1.1.2")
 
     with (Compose) {
         implementation(compiler)

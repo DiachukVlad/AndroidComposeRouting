@@ -2,6 +2,7 @@ package com.diachuk.routing
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.runtime.mutableStateListOf
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +14,7 @@ class Routing(start: Route) {
     private val _currentRoute = MutableStateFlow(start)
     val currentRoute = _currentRoute.asStateFlow()
 
-    val backStack = ArrayList<Route>()
+    val backStack = mutableStateListOf<Route>()
     var forceExitTransition: ExitTransition? = null
     var forceEnterTransition: EnterTransition? = null
     val prevRoute get() = backStack.lastOrNull()

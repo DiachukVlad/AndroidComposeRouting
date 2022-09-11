@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.vldi01"
-version = "1.1.0"
+version = "1.1.2"
 
 android {
     namespace = "com.diachuk.routing"
@@ -41,27 +41,14 @@ android {
     }
 }
 
-val androidSourcesJar by tasks.creating(Jar::class) {
+val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
     from(android.sourceSets["main"].java.srcDirs)
 }
-val androidJavadocs by tasks.creating(Javadoc::class) {
-    source = android.sourceSets["main"].java.getSourceFiles()
-}
-val androidJavadocsJar by tasks.creating(Jar::class) {
-    archiveClassifier.set("javadoc")
-    archiveClassifier.convention("javadoc")
 
-    archiveBaseName.convention("io.github.vldi01")
-    archiveBaseName.set("io.github.vldi01")
-
-    from(androidJavadocs.destinationDir)
-}
-
-
-artifacts {
-    archives(androidSourcesJar)
-}
+//artifacts {
+//    archives(sourcesJar)
+//}
 
 dependencies {
     with(Compose) {
@@ -86,7 +73,6 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "16"
 }
 
-
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -94,10 +80,8 @@ publishing {
             artifactId = "android-compose-routing"
             version = project.version as String
 
-            artifact("$buildDir/outputs/aar/routing-debug.aar")
-            //artifact("$buildDir/libs/routing-${project.version as String}-sources.aar")
-            artifact(androidSourcesJar)
-            artifact(androidJavadocsJar)
+            artifact("$buildDir/outputs/aar/routing-release.aar")
+            artifact(sourcesJar)
 
             pom {
                 name.set("Routing for Android Compose")
@@ -117,8 +101,8 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/vldi01/AndroidComposeRouting.git")
-                    developerConnection.set("scm:git:ssh://github.com/vldi01/AndroidComposeRouting.git")
+                    connection.set("https://github.com/vldi01/AndroidComposeRouting.git")
+                    developerConnection.set("git@github.com:vldi01/AndroidComposeRouting.git")
                     url.set("https://github.com/vldi01/AndroidComposeRouting")
                 }
             }

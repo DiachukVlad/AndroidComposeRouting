@@ -1,4 +1,4 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vldi01/android-compose-routing/badge.svg)](https://search.maven.org/artifact/io.github.vldi01/android-compose-routing/1.1.0/jar)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vldi01/android-compose-routing/badge.svg)](https://search.maven.org/artifact/io.github.vldi01/android-compose-routing/1.1.2/jar)
 # Routing for Android Compose
 
 
@@ -27,7 +27,7 @@ repositories {
 Add the dependency
 ```gradle
 dependencies {
-    implementation("io.github.vldi01:android-compose-routing:1.0.4")
+    implementation("io.github.vldi01:android-compose-routing:1.1.2")
     ...
 }
 ```

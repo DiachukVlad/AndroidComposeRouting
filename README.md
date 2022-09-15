@@ -1,9 +1,6 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vldi01/android-compose-routing/badge.svg)](https://search.maven.org/artifact/io.github.vldi01/android-compose-routing/1.1.2/jar)
 # Routing for Android Compose
-
-
-
-This is a small library that provides easy routing for your app.
+Routing feature for [Compose Android](https://developer.android.com/jetpack/compose/documentation)
 
 ## Advantages
 - Small
@@ -52,6 +49,8 @@ To change the screen simply run the ```routing.navigate``` method.
 
 You can easily get the ```Routing``` object using ```LocalRouting``` value. It is Composable Local Composition. 
 So it is available in any composable function inside the ```RoutingHost```
+
+To learn more about local compositing check the [official docs](https://developer.android.com/jetpack/compose/compositionlocal).
 
 ```kotlin
 val MainScreen by createRoute {
@@ -118,7 +117,7 @@ Just a view holder. But it also holds the animations.
 Singletone object. It is just a screen with a ```Box(Modifier.fillMaxSize())```
 
 ## Kotlin Flow Support
-First of all Routing has a ```currentRoute ``` value which is StateFlow. So you can observe it or use as a state inside your composable funtion.
+First of all Routing has a ```currentRoute``` value which is StateFlow. So you can observe it or use as a state inside your composable funtion.
 
 Also, you can make routing object observe your Flow of routes. You have to provide the start route, your Flow object and the behavior. 
 
@@ -131,7 +130,6 @@ For more info see [Routing Methods](#routinghost)
 ## Nested routing host
 It is allowed to use ```RoutingHost``` inside another ```RoutingHost```. 
 ```LocalRouting``` returns the local routing. because it is Locally scoped. 
-To learn more about local compositing check the [official docs](https://developer.android.com/jetpack/compose/compositionlocal).
 For the example check the [NestedRoutingExample](https://github.com/vldi01/AndroidComposeRouting/blob/master/example/src/main/kotlin/com/diachuk/routing/example/NestedRoutingExample.kt)
 
 

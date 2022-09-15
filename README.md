@@ -24,13 +24,13 @@ repositories {
 Add the dependency
 ```gradle
 dependencies {
-    implementation("io.github.vldi01:android-compose-routing:1.1.2")
+    implementation("io.github.vldi01:android-compose-routing:1.1.3")
     ...
 }
 ```
 ### 2. Create your first route
 ```kotlin
-val MainScreen by createRoute {
+val MainScreen by route {
     Box(Modifier.fillMaxSize())
 }
 ```
@@ -53,7 +53,7 @@ So it is available in any composable function inside the ```RoutingHost```
 To learn more about local compositing check the [official docs](https://developer.android.com/jetpack/compose/compositionlocal).
 
 ```kotlin
-val MainScreen by createRoute {
+val MainScreen by route {
     Column(Modifier.fillMaxSize()) {
         val routing = LocalRouting
 
@@ -111,7 +111,12 @@ A main object. It holds current route, back stack and provides methods for navig
 - ```currentRoute``` It is a StateFlow that holds current route.
 
 ## Route
-Just a view holder. But it also holds the animations.
+Just a view holder with a name. But it also holds the animations. Name should be unique because the equality is checked using it. 
+
+## Creating a route
+- ```route(enterTransition, exitTransition, content)``` function. Returns delegate. It actually creates a singletone route object with lazy logic. So it is created only when needed. This route has same name as your variale.
+- ```createRoute(name, enterTransition, exitTransition, content)``` function. Returns a route. Please use it only when you need to pass some data to the route. 
+- Also, for creating a route you can extend ```Route``` class. In this case route will have name of your class.
 
 ## EmptyRoute
 Singletone object. It is just a screen with a ```Box(Modifier.fillMaxSize())```
@@ -143,6 +148,14 @@ class UserRoute(private val userName: String) : Route() {
             Text(text = "UserName = $userName", style = MaterialTheme.typography.h3.copy(color = Color.White))
         }
     }
+}
+```
+Or you can create your own createRoute function with some arguments that calls createRoute function. But in this case you have to provide a name of the route. Routes equality is checking using this name.
+```kotlin
+fun createUserRoute(
+    userName: String
+) = createRoute("UserRoute_func") {
+    UserScreen(userName = userName)
 }
 ```
 

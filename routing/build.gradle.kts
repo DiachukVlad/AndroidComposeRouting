@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.vldi01"
-version = "1.1.2"
+version = "1.1.3"
 
 android {
     namespace = "com.diachuk.routing"

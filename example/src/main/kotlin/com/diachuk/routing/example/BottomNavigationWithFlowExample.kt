@@ -18,12 +18,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.diachuk.routing.NavigationBehaviour
 import com.diachuk.routing.Route
 import com.diachuk.routing.RoutingHost
-import com.diachuk.routing.createRoute
+import com.diachuk.routing.route
 import kotlinx.coroutines.flow.MutableStateFlow
 
 val routeFlow = MutableStateFlow(GreenScreen)
 
-val BottomNavigationFlowScreen by createRoute {
+val BottomNavigationFlowScreen by route {
     Scaffold(
         bottomBar = {
             BottomFlowBar()

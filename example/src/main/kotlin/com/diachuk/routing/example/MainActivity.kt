@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntOffset
 import com.diachuk.routing.LocalRouting
 import com.diachuk.routing.RoutingHost
-import com.diachuk.routing.createRoute
+import com.diachuk.routing.route
 import com.diachuk.routing.example.ui.theme.NestedRoutingScreen
 import com.diachuk.routing.example.ui.theme.RoutingTheme
 
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-val MainScreen by createRoute {
+val MainScreen by route {
     Column(Modifier.fillMaxSize()) {
         val routing = LocalRouting
 
@@ -69,7 +69,7 @@ val MainScreen by createRoute {
     }
 }
 
-val BlueScreen by createRoute {
+val BlueScreen by route {
     Box(
         modifier = Modifier
             .fillMaxSize()

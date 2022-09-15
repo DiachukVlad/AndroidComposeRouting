@@ -47,6 +47,20 @@ private class CreateRouteDelegateImpl(
 }
 
 fun createRoute(
+    name: String,
+    enterTransition: EnterTransition = fadeIn(),
+    exitTransition: ExitTransition = fadeOut(),
+    content: @Composable () -> Unit
+) = object : Route(enterTransition, exitTransition) {
+    override val name = name
+
+    @Composable
+    override fun Content() {
+        content()
+    }
+}
+
+fun route(
     enterTransition: EnterTransition = fadeIn(),
     exitTransition: ExitTransition = fadeOut(),
     content: @Composable () -> Unit

@@ -17,10 +17,10 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.diachuk.routing.LocalRouting
 import com.diachuk.routing.RoutingHost
-import com.diachuk.routing.createRoute
+import com.diachuk.routing.route
 import com.diachuk.routing.example.BlueScreen
 
-val NestedRoutingScreen by createRoute {
+val NestedRoutingScreen by route {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -31,7 +31,7 @@ val NestedRoutingScreen by createRoute {
     }
 }
 
-val NestedMainScreen by createRoute {
+val NestedMainScreen by route {
     Column(Modifier.fillMaxSize()) {
         val routing = LocalRouting
 

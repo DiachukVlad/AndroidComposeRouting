@@ -21,9 +21,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.diachuk.routing.Route
+import com.diachuk.routing.Routing
 import com.diachuk.routing.RoutingHost
+import com.diachuk.routing.route
 
-val BottomNavigationScreen by createRoute {
+val BottomNavigationScreen by route {
     val routing = remember { Routing(GreenScreen) }
     Scaffold(
         bottomBar = {
@@ -59,7 +61,7 @@ fun RowScope.ExampleBottomNavigationItem(routing: Routing, route: Route, icon: I
     })
 }
 
-val GreenScreen by createRoute {
+val GreenScreen by route {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -67,7 +69,7 @@ val GreenScreen by createRoute {
     )
 }
 
-val RedScreen by createRoute {
+val RedScreen by route {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -75,7 +77,7 @@ val RedScreen by createRoute {
     )
 }
 
-val MagentaScreen by createRoute {
+val MagentaScreen by route {
     Box(
         modifier = Modifier
             .fillMaxSize()

@@ -12,21 +12,29 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import com.diachuk.routing.LocalRouting
-import com.diachuk.routing.Route
-import com.diachuk.routing.RoutingHost
-import com.diachuk.routing.createRoute
+import com.diachuk.routing.*
 
 class UserRoute(private val userName: String) : Route() {
     @Composable
     override fun Content() {
-        Box(modifier = Modifier.fillMaxSize()) {
-            Text(text = "UserName = $userName", style = MaterialTheme.typography.h3.copy(color = Color.White))
-        }
+        UserScreen(userName)
     }
 }
 
-val SendDataScreen by createRoute {
+fun createUserRoute(
+    userName: String
+) = createRoute("UserRoute_func") {
+    UserScreen(userName = userName)
+}
+
+@Composable
+fun UserScreen(userName: String) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Text(text = "UserName = $userName", style = MaterialTheme.typography.h3.copy(color = Color.White))
+    }
+}
+
+val SendDataScreen by route {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -36,7 +44,7 @@ val SendDataScreen by createRoute {
     }
 }
 
-val SendDataMainScreen by createRoute {
+val SendDataMainScreen by route {
     val routing = LocalRouting
     var name by remember { mutableStateOf("") }
 
@@ -50,8 +58,11 @@ val SendDataMainScreen by createRoute {
             label = { Text(text = "User Name") },
             textStyle = TextStyle(color = Color.White)
         )
-        Button(onClick = { routing.navigate(UserRoute(name)) }) {
+        Button(onClick = { routing.navigate(createUserRoute(name)) }) {
             Text(text = "User screen")
+        }
+        Button(onClick = { routing.navigate(UserRoute(name)) }) {
+            Text(text = "User screen class")
         }
     }
 }

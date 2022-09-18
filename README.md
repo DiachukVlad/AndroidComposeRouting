@@ -1,4 +1,4 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vldi01/android-compose-routing/badge.svg)](https://search.maven.org/artifact/io.github.vldi01/android-compose-routing/1.1.2/jar)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vldi01/android-compose-routing/badge.svg)](https://search.maven.org/search?q=g:io.github.vldi01%20AND%20a:android-compose-routing)
 # Routing for Android Compose
 Routing feature for [Compose Android](https://developer.android.com/jetpack/compose/documentation)
 
